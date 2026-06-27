@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* ── Design tokens (Tailwind v4 @theme) ───────────────────────────────────
+   Exposes utilities like bg-ink, text-cream, text-accent, font-display, etc. */
+@theme {
+  --color-ink: #000000;          /* primary black text + dark cards            */
+  --color-cream: #f5f5f5;        /* off-white page background                  */
+  --color-accent: #ef4444;       /* single red accent (errors / highlights)    */
+
+  --color-zinc-150: #ececee;     /* hairline borders on light cards            */
+
+  --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* Offset anchored sections so the sticky header doesn't overlap them. */
+    scroll-padding-top: 5rem;
+  }
+
+  html,
+  body {
+    margin: 0;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Fonts loaded from Google Fonts (see index.html could host link; using @import-free
+     fallback to system stack if offline). */
+}
+
+@layer utilities {
+  /* Outlined (stroke-only, transparent fill) word used in layered section titles. */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-ink);
+  }
+  .text-outline-cream {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-cream);
+  }
+
+  /* Hide the native cursor when the custom blend-mode cursor is active. */
+  .cursor-none-all,
+  .cursor-none-all * {
+    cursor: none;
+  }
+}
