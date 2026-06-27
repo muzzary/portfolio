@@ -23,3 +23,11 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+
+# Private source material & planning docs (not for the public repo)
+Muzzary_Babar_Master_CV.docx
+image.png
+CLAUDE.md
+protfolio.md
+PLAN.md
+# NOTE: public/Muzzary_Babar_Resume.docx is intentionally tracked — it's served by the site.
