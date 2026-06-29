@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 
-type Variant = 'primary' | 'outline'
+export type Variant = 'primary' | 'outline'
 
 const base =
   'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold ' +
@@ -12,6 +12,12 @@ const base =
 const variants: Record<Variant, string> = {
   primary: 'bg-ink text-cream hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ink/20',
   outline: 'border border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream',
+}
+
+/** Returns the button's class string for reuse on non-button elements
+ *  (e.g. a react-router <Link> that should look like a button). */
+export function buttonClasses(variant: Variant = 'primary', className?: string): string {
+  return cn(base, variants[variant], className)
 }
 
 interface CommonProps {

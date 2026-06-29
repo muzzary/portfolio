@@ -1,44 +1,80 @@
 import type { SVGProps } from 'react'
 
-/** Decorative, dependency-free hero illustration: a stylised developer workspace
- *  in the site's monochrome + accent palette. Purely presentational. */
+/** Original flat, monochrome illustration of a seated developer working on a
+ *  laptop. Dependency-free and purely decorative (aria-hidden). */
 export default function HeroIllustration(props: SVGProps<SVGSVGElement>) {
+  const ink = '#000000'
+  const cream = '#f5f5f5'
+  const accent = '#ef4444'
+
   return (
-    <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" {...props}>
-      {/* Backdrop blob */}
-      <path
-        d="M330 120c34 40 52 96 33 140s-77 70-131 80-122 5-156-29-39-92-14-141 80-78 134-83 100-7 134 33Z"
-        fill="#000000"
-        opacity="0.04"
-      />
+    <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" {...props}>
+      {/* Backdrop */}
+      <circle cx="232" cy="210" r="185" fill={ink} opacity="0.04" />
+      <circle cx="232" cy="210" r="185" stroke={ink} strokeOpacity="0.06" strokeWidth="2" strokeDasharray="4 10" />
 
-      {/* Monitor */}
-      <rect x="92" y="96" width="236" height="158" rx="12" fill="#000000" />
-      <rect x="104" y="108" width="212" height="134" rx="6" fill="#f5f5f5" />
+      {/* Ground line */}
+      <line x1="70" y1="402" x2="392" y2="402" stroke={ink} strokeWidth="3" strokeLinecap="round" />
 
-      {/* Code lines */}
-      <rect x="120" y="126" width="46" height="9" rx="4.5" fill="#000000" opacity="0.85" />
-      <rect x="172" y="126" width="70" height="9" rx="4.5" fill="#ef4444" />
-      <rect x="120" y="146" width="120" height="9" rx="4.5" fill="#000000" opacity="0.15" />
-      <rect x="136" y="166" width="92" height="9" rx="4.5" fill="#000000" opacity="0.15" />
-      <rect x="136" y="186" width="140" height="9" rx="4.5" fill="#000000" opacity="0.3" />
-      <rect x="120" y="206" width="58" height="9" rx="4.5" fill="#ef4444" opacity="0.7" />
-      <rect x="184" y="206" width="40" height="9" rx="4.5" fill="#000000" opacity="0.15" />
+      {/* Seat */}
+      <ellipse cx="232" cy="338" rx="74" ry="26" fill={ink} />
 
-      {/* Stand */}
-      <rect x="196" y="254" width="28" height="26" fill="#000000" />
-      <rect x="160" y="280" width="100" height="12" rx="6" fill="#000000" />
+      {/* Legs (light trousers) */}
+      <path d="M196,316 L178,392 L214,392 L224,318 Z" fill={cream} stroke={ink} strokeWidth="4" strokeLinejoin="round" />
+      <path d="M268,316 L286,392 L250,392 L240,318 Z" fill={cream} stroke={ink} strokeWidth="4" strokeLinejoin="round" />
 
-      {/* Floating brackets (AI/code motif) */}
-      <text x="60" y="80" fontFamily="monospace" fontSize="34" fontWeight="700" fill="#000000" opacity="0.18">
+      {/* Shoes */}
+      <rect x="166" y="388" width="54" height="16" rx="8" fill={ink} />
+      <rect x="244" y="388" width="54" height="16" rx="8" fill={ink} />
+
+      {/* Torso / jacket (broad shoulders) */}
+      <path d="M166,188 Q232,154 298,188 L300,316 L164,316 Z" fill={ink} />
+      {/* Collar accent */}
+      <path d="M214,168 L232,196 L250,168" stroke={cream} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <line x1="232" y1="196" x2="232" y2="300" stroke={cream} strokeOpacity="0.25" strokeWidth="3" />
+
+      {/* Neck */}
+      <rect x="222" y="138" width="20" height="26" rx="8" fill={cream} stroke={ink} strokeWidth="4" />
+
+      {/* Head */}
+      <circle cx="232" cy="112" r="38" fill={cream} stroke={ink} strokeWidth="4" />
+      {/* Ears */}
+      <circle cx="195" cy="115" r="6" fill={cream} stroke={ink} strokeWidth="3" />
+      <circle cx="269" cy="115" r="6" fill={cream} stroke={ink} strokeWidth="3" />
+      {/* Short, textured masculine hair */}
+      <path d="M194,104 Q190,66 214,67 Q224,57 236,65 Q250,60 258,71 Q272,76 270,104 Q262,82 232,82 Q204,82 194,104 Z" fill={ink} />
+      {/* Eyebrows */}
+      <path d="M211,101 Q219,97 227,101" stroke={ink} strokeWidth="3.5" strokeLinecap="round" fill="none" />
+      <path d="M237,101 Q245,97 253,101" stroke={ink} strokeWidth="3.5" strokeLinecap="round" fill="none" />
+      {/* Eyes */}
+      <circle cx="219" cy="110" r="3" fill={ink} />
+      <circle cx="245" cy="110" r="3" fill={ink} />
+      {/* Nose */}
+      <path d="M232,114 L228,127 Q232,130 236,127" stroke={ink} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* Full beard + mustache */}
+      <path d="M197,116 Q195,142 210,156 Q221,166 232,166 Q243,166 254,156 Q269,142 267,116 Q259,140 232,142 Q205,140 197,116 Z" fill={ink} />
+      <path d="M219,133 Q232,139 245,133 Q239,129 232,130 Q225,129 219,133 Z" fill={ink} />
+
+      {/* Arms reaching to the laptop */}
+      <path d="M174,202 Q146,252 184,300 L204,296 Q176,252 196,210 Z" fill={ink} />
+      <path d="M290,202 Q318,252 280,300 L260,296 Q288,252 268,210 Z" fill={ink} />
+
+      {/* Laptop on the lap */}
+      <path d="M150,326 L314,326 L300,344 L164,344 Z" fill={ink} />
+      <rect x="170" y="262" width="124" height="66" rx="8" fill={ink} stroke={cream} strokeWidth="3" />
+      <circle cx="232" cy="295" r="9" fill={accent} />
+
+      {/* Plant */}
+      <path d="M372,392 L364,356 L392,356 L384,392 Z" fill={ink} />
+      <path d="M378,356 Q360,332 366,312 Q380,330 378,356" fill={ink} />
+      <path d="M378,356 Q396,332 390,312 Q376,330 378,356" fill={accent} opacity="0.9" />
+
+      {/* Floating accents */}
+      <text x="78" y="150" fontFamily="monospace" fontSize="30" fontWeight="700" fill={ink} opacity="0.18">
         {'</>'}
       </text>
-      <circle cx="338" cy="300" r="26" fill="#ef4444" opacity="0.9" />
-      <text x="338" y="308" textAnchor="middle" fontFamily="monospace" fontSize="22" fontWeight="700" fill="#f5f5f5">
-        AI
-      </text>
-      <circle cx="78" cy="300" r="14" fill="#000000" />
-      <circle cx="356" cy="120" r="8" fill="#000000" opacity="0.5" />
+      <circle cx="96" cy="300" r="9" fill={ink} opacity="0.5" />
+      <circle cx="372" cy="170" r="6" fill={accent} />
     </svg>
   )
 }

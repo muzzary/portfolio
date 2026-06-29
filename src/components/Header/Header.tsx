@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { NAV_LINKS, RESUME_URL } from '../../constants'
+import { Link } from 'react-router-dom'
+import { NAV_LINKS, RESUME_PAGE } from '../../constants'
 import { useMobileMenu } from '../../contexts/MobileMenuContext'
 import { cn } from '../../lib/cn'
-import Button from '../UI/Button'
+import { buttonClasses } from '../UI/Button'
 import { CloseIcon, MenuIcon } from '../UI/icons'
 
 export default function Header() {
@@ -52,9 +53,9 @@ export default function Header() {
         </ul>
 
         <div className="hidden md:block">
-          <Button href={RESUME_URL} download variant="primary">
+          <Link to={RESUME_PAGE} className={buttonClasses('primary')}>
             Resume
-          </Button>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -91,9 +92,13 @@ export default function Header() {
             </li>
           ))}
           <li className="px-3 pt-2">
-            <Button href={RESUME_URL} download variant="primary" className="w-full" onClick={close}>
+            <Link
+              to={RESUME_PAGE}
+              onClick={close}
+              className={buttonClasses('primary', 'w-full')}
+            >
               Resume
-            </Button>
+            </Link>
           </li>
         </ul>
       </div>

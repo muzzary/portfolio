@@ -1,4 +1,4 @@
-import type { Experience, Project, SkillGroup, Socials } from './types'
+import type { Experience, Project, Skill, Socials } from './types'
 
 /** Outbound contact links. The email here is the public-facing personal address. */
 export const SOCIALS: Socials = {
@@ -7,8 +7,11 @@ export const SOCIALS: Socials = {
   email: 'muzzarybabar@gmail.com',
 }
 
-/** Resume file served from /public. Replace with a PDF export when available. */
-export const RESUME_URL = '/Muzzary_Babar_Resume.docx'
+/** In-app route for the resume viewer page. */
+export const RESUME_PAGE = '/resume'
+
+/** Resume PDF served from /public (used by the viewer + the download button). */
+export const RESUME_FILE = '/Muzzary_Babar_Resume.pdf'
 
 /** Hero section copy. `roles` cycle through the typing animation. */
 export const HERO = {
@@ -35,70 +38,27 @@ export const ABOUT_PARAGRAPHS: string[] = [
   "I enjoy working independently, solving hard problems, and learning quickly in a collaborative team, with a 100% on-time delivery record across freelance engagements for international clients.",
 ]
 
-/** Grouped technical skills, mirrored from the resume's skills section. */
-export const SKILL_GROUPS: SkillGroup[] = [
-  {
-    category: 'Languages',
-    items: [
-      { name: 'Python', icon: '🐍' },
-      { name: 'JavaScript (ES6+)', icon: '🟨' },
-      { name: 'TypeScript', icon: '🔷' },
-      { name: 'SQL', icon: '🗃️' },
-      { name: 'C++', icon: '➕' },
-      { name: 'Java', icon: '☕' },
-    ],
-  },
-  {
-    category: 'AI / ML',
-    items: [
-      { name: 'RAG', icon: '🔎' },
-      { name: 'Vector Search (pgvector)', icon: '📐' },
-      { name: 'Embeddings (ONNX)', icon: '🧠' },
-      { name: 'LLM APIs', icon: '🤖' },
-      { name: 'scikit-learn', icon: '📊' },
-      { name: 'Pandas / NumPy', icon: '🐼' },
-    ],
-  },
-  {
-    category: 'Frontend',
-    items: [
-      { name: 'React 18', icon: '⚛️' },
-      { name: 'Tailwind CSS', icon: '🎨' },
-      { name: 'HTML5', icon: '📄' },
-      { name: 'CSS3', icon: '🎭' },
-      { name: 'React Router', icon: '🧭' },
-      { name: 'Axios', icon: '🔌' },
-    ],
-  },
-  {
-    category: 'Backend',
-    items: [
-      { name: 'Node.js', icon: '🟩' },
-      { name: 'Express', icon: '🚂' },
-      { name: 'FastAPI', icon: '⚡' },
-      { name: 'REST APIs', icon: '🔗' },
-      { name: 'JWT Auth', icon: '🔐' },
-    ],
-  },
-  {
-    category: 'Databases',
-    items: [
-      { name: 'PostgreSQL', icon: '🐘' },
-      { name: 'pgvector', icon: '📍' },
-      { name: 'MongoDB', icon: '🍃' },
-      { name: 'MySQL', icon: '🐬' },
-    ],
-  },
-  {
-    category: 'Testing & Tools',
-    items: [
-      { name: 'Jest / Supertest', icon: '🧪' },
-      { name: 'Git / GitHub', icon: '🔧' },
-      { name: 'Docker', icon: '🐳' },
-      { name: 'Vercel / Railway', icon: '🚀' },
-      { name: 'Linux', icon: '🐧' },
-    ],
-  },
+/** Flat, curated skills shown as square icon cards.
+ *  `icon` is a slug resolved to a brand glyph in `components/Skills/skillIcons`. */
+export const SKILLS: Skill[] = [
+  { name: 'Python', icon: 'python' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'TypeScript', icon: 'typescript' },
+  { name: 'React', icon: 'react' },
+  { name: 'Node.js', icon: 'nodejs' },
+  { name: 'Express', icon: 'express' },
+  { name: 'FastAPI', icon: 'fastapi' },
+  { name: 'Tailwind', icon: 'tailwind' },
+  { name: 'MongoDB', icon: 'mongodb' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'MySQL', icon: 'mysql' },
+  { name: 'RAG', icon: 'rag' },
+  { name: 'LLM APIs', icon: 'openai' },
+  { name: 'scikit-learn', icon: 'scikitlearn' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Git / GitHub', icon: 'github' },
+  { name: 'Linux', icon: 'linux' },
+  { name: 'Jest', icon: 'jest' },
 ]
 
 /** Featured projects, ordered by impact. */
@@ -165,12 +125,15 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-/** Professional experience timeline. */
+/** Professional experience timeline. `icon` resolves to a badge glyph in the
+ *  Experience component; `accent` tints the badge background. */
 export const EXPERIENCE: Experience[] = [
   {
     role: 'Software Engineer (Full-Stack Developer)',
     company: 'AlpharexX',
     period: 'Jun 2026 – Present · Remote',
+    icon: 'rocket',
+    accent: '#ef4444',
     highlights: [
       'Full-stack web development and backend API development on long-term product vision.',
       'Server deployment & infrastructure management, plus AI integration and model training support.',
@@ -179,8 +142,10 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     role: 'Independent Freelancer — Software, Web, ML & Database',
-    company: 'Self-employed',
+    company: 'Self-employed · International clients',
     period: '2023 – Present',
+    icon: 'freelance',
+    accent: '#000000',
     highlights: [
       'Delivered web, database, ML, NLP, and software projects for international clients, remotely from requirements to delivery.',
       'Maintained a 100% on-time delivery record with positive feedback across all engagements.',
@@ -193,6 +158,7 @@ export const EXPERIENCE: Experience[] = [
 export const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ] as const

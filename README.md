@@ -51,8 +51,9 @@ visitor's email client via `mailto:`. To send through EmailJS instead:
 ## Editing content
 
 All copy and data live in [`src/constants.ts`](src/constants.ts): hero/about text, skills,
-projects, experience, and social links. Replace the resume file at
-`public/Muzzary_Babar_Resume.docx` (a PDF export is recommended) and update `RESUME_URL` if renamed.
+projects, experience, and social links. The resume is served from
+`public/Muzzary_Babar_Resume.pdf` and viewed at the `/resume` route; replace that file (and
+update `RESUME_FILE` if renamed) to swap in a new resume.
 
 ## Deployment
 

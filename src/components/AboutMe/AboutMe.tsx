@@ -1,6 +1,12 @@
-import { ABOUT_PARAGRAPHS, EXPERIENCE } from '../../constants'
+import { ABOUT_PARAGRAPHS } from '../../constants'
 import Reveal from '../UI/Reveal'
 import SectionHeading from '../UI/SectionHeading'
+
+const FOCUS = [
+  'Full-stack web apps (MERN) — designed, built, and deployed end to end',
+  'AI / ML systems — RAG pipelines, retrieval evaluation, LLM integration',
+  'Clean, tested code — REST APIs, auth, and multi-dimensional code reviews',
+]
 
 export default function AboutMe() {
   return (
@@ -46,24 +52,16 @@ export default function AboutMe() {
 
           <Reveal delay={0.2}>
             <h3 className="mt-10 mb-5 text-sm font-bold uppercase tracking-widest text-ink/50">
-              Experience
+              What I do
             </h3>
-            <ol className="space-y-6 border-l border-ink/10 pl-6">
-              {EXPERIENCE.map((exp) => (
-                <li key={exp.company} className="relative">
-                  <span className="absolute -left-[1.65rem] top-1.5 h-3 w-3 rounded-full border-2 border-cream bg-ink" />
-                  <p className="font-display font-bold">{exp.role}</p>
-                  <p className="text-sm text-ink/60">
-                    {exp.company} · {exp.period}
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-ink/70 marker:text-accent">
-                    {exp.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
+            <ul className="space-y-3">
+              {FOCUS.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/75">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                  {item}
                 </li>
               ))}
-            </ol>
+            </ul>
           </Reveal>
         </div>
       </div>
